@@ -6,8 +6,8 @@
 process bamToFastq_STAR {
     label 'short'
 
-    publishDir "path/to/fastq_STAR/${sample}", mode: 'copy'
-    container 'path/to/samtools_1.17--hd87286a_1.img'
+    publishDir "/path/to/fastq_STAR/${sample}", mode: 'copy'
+    container '/path/to/samtools_1.17--hd87286a_1.img'
 
     input:
         val sample
