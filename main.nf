@@ -21,6 +21,7 @@ include { bamToFastq_HISAT2 } from './modules/bamToFastq_HISAT2.nf'
 include { salmonQuant } from './modules/salmonQuant.nf'
 include { sambambaMarkDup } from './modules/sambambaMarkDup.nf'
 include { sambambaFlagstat } from './modules/sambambaFlagstat.nf'
+include { RSeQC } from './modules/RSeQC.nf'
 
 
 workflow {
@@ -72,5 +73,8 @@ workflow {
 
     // get FLAG statistics
     sambambaFlagstat(params.sample,sambambaMarkDup.out)
-    
+
+    // run the read_duplication script
+    RSeQC(params.sample, params.bam)
+
 }
