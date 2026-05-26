@@ -1,5 +1,5 @@
 # Analysing SMN2 mRNA isoforms in spinal muscular atrophy using short-read RNA sequencing data
-This repository is associated with my MSc internship at UMCU. Here, I analyzed SMN2 transcripts isoforms in SMA. For this purpose, I created a Nextflow pipeline that contains the following main steps:
+This repository is associated with my MSc internship at UMCU. Here, I analyzed SMN2 transcripts isoforms in SMA. For this purpose, I created a Nextflow pipeline for short-read RNA-seq that contains the following main steps:
 - Read alignment with HISAT2
 - Transcript assembly with Scallop2
 - Transcript quantification with Salmon
