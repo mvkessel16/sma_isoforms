@@ -7,4 +7,4 @@ Then, transcript names were extracted using:
 awk '{print $12}' /path/to/scallop2_output/${sample}/${sample}_transcripts_novel_SMN2.gtf | sed 's/^"\(.*\)";$/\1/' | sort -u > ${sample}/old_transcripts.txt
 ```
 
-seqkit rename was used to rename the transcripts, so that there is no identical transcript names across the dataset.
+seqkit rename was used to rename the transcripts, so that there is no identical transcript name across the dataset.
