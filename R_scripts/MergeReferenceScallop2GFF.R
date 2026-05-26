@@ -39,21 +39,21 @@ for (i in 1:25){ #The names_gtf vector was 25 items long
   all_novel_gtf <- c(all_novel_gtf,gtf)
 }
 
-writeLines(all_novel_gtf, "/path/to/ref_gen/T2T/UCSC/UCSC_T2T_Isoforms_Plus_AllNovelIsoforms/AllNovelSMN2Isoforms.gtf")
+writeLines(all_novel_gtf, "/path/to/AllNovelSMN2Isoforms.gtf")
 
 #Combine UCSC reference with novel isoforms in GFF3
-novel_gtf <- rtracklayer::import("/path/to/ref_gen/T2T/UCSC/UCSC_T2T_Isoforms_Plus_AllNovelIsoforms/AllNovelSMN2Isoforms.gtf")
+novel_gtf <- rtracklayer::import("/path/to/AllNovelSMN2Isoforms.gtf")
 novel_gtf <- dplyr::as_tibble(novel_gtf)
-ref_gtf <- rtracklayer::import("path/to/ref_gen/T2T/UCSC/T2T_UCSC_GENCODEv35_CAT_Liftoffv2_SMN1masked.gff3")
+ref_gtf <- rtracklayer::import("path/to/T2T_UCSC_GENCODEv35_CAT_Liftoffv2_SMN1masked.gff3")
 ref_gtf <- dplyr::as_tibble(ref_gtf)
 total_gtf <- bind_rows(ref_gtf,novel_gtf)
 total_gtf$gene_name[total_gtf$source=="scallop2"]="SMN2"
-rtracklayer::export.gff3(total_gtf,con="/path/to/ref_gen/T2T/UCSC/UCSC_T2T_Isoforms_Plus_AllNovelIsoforms/UCSC_T2T_Isoforms_Plus_AllNovelSMN2Isoforms.gff3")
-save(total_gtf,file="/path/to/ref_gen/T2T/UCSC/UCSC_T2T_Isoforms_Plus_AllNovelIsoforms/UCSC_T2T_Isoforms_Plus_AllNovelSMN2Isoforms_gff3.RData")
+rtracklayer::export.gff3(total_gtf,con="/path/to/UCSC_T2T_Isoforms_Plus_AllNovelSMN2Isoforms.gff3")
+save(total_gtf,file="/path/to/UCSC_T2T_Isoforms_Plus_AllNovelSMN2Isoforms_gff3.RData")
 
 #Combine UCSC reference with novel isoforms in GFF2/GTF
-ref_gtf2 <- rtracklayer::import.gff2("/path/to/ref_gen/T2T/UCSC/T2T_UCSC_GENCODEv35_CAT_Liftoffv2_SMN1masked.gtf")
+ref_gtf2 <- rtracklayer::import.gff2("/path/to/T2T_UCSC_GENCODEv35_CAT_Liftoffv2_SMN1masked.gtf")
 ref_gtf2 <- dplyr::as_tibble(ref_gtf2)
 total_gtf2 <- bind_rows(ref_gtf2,novel_gtf)
 total_gtf2$gene_name[total_gtf2$source=="scallop2"]="SMN2"
-rtracklayer::export.gff2(total_gtf2,con="/path/to/ref_gen/T2T/UCSC/UCSC_T2T_Isoforms_Plus_AllNovelIsoforms/UCSC_T2T_Isoforms_Plus_AllNovelSMN2Isoforms.gtf")
+rtracklayer::export.gff2(total_gtf2,con="/path/to/UCSC_T2T_Isoforms_Plus_AllNovelSMN2Isoforms.gtf")
