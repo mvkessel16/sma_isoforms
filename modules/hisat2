@@ -1,0 +1,27 @@
+#!/usr/bin/env nextflow
+
+/*
+ * Aligns paired-end, stranded reads to a HISAT2 index 
+ */
+process hisat2 {
+    label 'long'
+
+    publishDir "/path/to/hisat2_output/${sample}", mode: 'copy', pattern: "*_sum.txt"
+
+    input:
+        val sample
+        path read1_STAR
+        path read1_unmapped
+        path read2_STAR
+        path read2_unmapped
+        path hisat2_index
+
+    output:
+        path "${sample}_hisat2.sam", emit: sam
+        path "${sample}_hisat2_sum.txt"
+
+    script:
+    """
+    /path/to/hisat2 --dta --rna-strandness FR --summary-file ${sample}_hisat2_sum.txt --new-summary -p 10 -q -x ${hisat2_index} -1 ${read1_STAR},${read1_unmapped} -2 ${read2_STAR},${read2_unmapped} -S ${sample}_hisat2.sam
+    """
+}
