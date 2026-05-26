@@ -13,7 +13,7 @@ Then run this Bash code:
 while IFS=',' read -r sample bam_STAR read1_unmapped read2_unmapped 
 do
 	echo ${sample}    
-	sbatch run_mainpipeline.sh ${sample} ${bam_STAR} ${read1_unmapped} ${read2_unmapped} /path/to/hisat2_index /path/to/ref_gtf /path/to/ref_gen /path/to/ref_transcripts
+	sbatch run_main.sh ${sample} ${bam_STAR} ${read1_unmapped} ${read2_unmapped} /path/to/hisat2_index /path/to/ref_gtf /path/to/ref_gen /path/to/ref_transcripts
 done < samples.csv > log/jobs.txt
 ```
 
