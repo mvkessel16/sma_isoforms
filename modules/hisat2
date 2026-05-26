@@ -22,6 +22,6 @@ process hisat2 {
 
     script:
     """
-    /path/to/hisat2 --dta --rna-strandness FR --summary-file ${sample}_hisat2_sum.txt --new-summary -p 10 -q -x ${hisat2_index} -1 ${read1_STAR},${read1_unmapped} -2 ${read2_STAR},${read2_unmapped} -S ${sample}_hisat2.sam
+    /path/to/hisat2-2.2.1/hisat2 --dta --rna-strandness FR --summary-file ${sample}_hisat2_sum.txt --new-summary -p 10 -q -x ${hisat2_index} -1 ${read1_STAR},${read1_unmapped} -2 ${read2_STAR},${read2_unmapped} -S ${sample}_hisat2.sam
     """
 }
