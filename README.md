@@ -18,3 +18,5 @@ done < samples.csv > log/jobs.txt
 ```
 
 Some samples will unfortunately not run, and instead give this error: "ERROR ~ No locks available". These should be run again.
+
+Subsequent analysis is done using Sleuth (https://github.com/pachterlab/sleuth). See R_scripts for these additional scripts.
