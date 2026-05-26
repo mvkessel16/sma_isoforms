@@ -1,0 +1,24 @@
+#!/usr/bin/env nextflow
+
+/*
+ * Uses output of gffcompare to extract all novel (i.e. not in reference) isoforms in Scallop2 GTF
+ */
+process gtfcuff {
+    label 'short'
+
+    publishDir "/path/to/scallop2_output/${sample}", mode: 'copy'
+
+    input:
+        val sample
+        path scallop2_gtf
+        path tmap
+        path ref_gtf
+
+    output:
+        path "${sample}_transcripts_novel.gtf"
+
+    script:
+    """
+    /path/to/rnaseqtools-1.0.3/gtfcuff/gtfcuff puniq ${tmap} ${scallop2_gtf} ${ref_gtf} ${sample}_transcripts_novel.gtf
+    """
+}
